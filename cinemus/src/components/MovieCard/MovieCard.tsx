@@ -34,6 +34,9 @@ export default function MovieCard({ movie }: MovieCardProps) {
             addFavorite(movie.id);
         }
 
+        // Mark overlay as visible because clicking the heart icon will show the overlay too
+        setOverlayVisible(true);
+
         // Trigger pulse animation that times out with the same animation duration
         setPulse(true);
         setTimeout(() => setPulse(false), 600);
