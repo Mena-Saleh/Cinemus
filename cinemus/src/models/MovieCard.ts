@@ -1,7 +1,7 @@
 export interface MovieCard {
-    title: string;
-    posterPath: string;
-    releaseYear: string;
-    rating: number;
     id: number;
+    title: string;
+    poster_path: string | null;
+    release_date: string;
+    vote_average: number;
 }

@@ -13,7 +13,7 @@ export default function MovieCard({ movie }: MovieCardProps) {
     return (
         <div className={styles.card}>
             <Image
-                src={`${TMDB_IMAGE_BASE_URL}${movie.posterPath}`}
+                src={`${TMDB_IMAGE_BASE_URL}${movie.poster_path}`}
                 alt={`${movie.title} poster`}
                 fill
                 className={styles.poster}
@@ -22,10 +22,10 @@ export default function MovieCard({ movie }: MovieCardProps) {
             <div className={styles.overlay}>
                 <div className={styles.info}>
                     <h3 className={styles.title}>{movie.title}</h3>
-                    <span className={styles.year}>{movie.releaseYear}</span>
+                    <span className={styles.year}>{movie.release_date}</span>
                     <div className={styles.rating}>
                         <Star fill="currentColor" size={16} className={styles.starIcon} />
-                        <span>{movie.rating.toFixed(1)}</span>
+                        <span>{movie.vote_average.toFixed(1)}</span>
                     </div>
                 </div>
             </div>

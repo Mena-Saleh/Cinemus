@@ -8,6 +8,10 @@
     margin: 0 auto;
 }
 
+.empty {
+    text-align: center;
+}
+
 @media (max-width: 640px) {
     .container {
         margin: 0 auto;

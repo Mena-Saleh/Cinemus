@@ -1,18 +1,21 @@
 'use client';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Search } from 'lucide-react';
 import styles from './SearchBar.module.css';
+import { useState } from 'react';
 
 interface SearchBarProps {
     placeholder?: string;
-    onSearch?: (query: string) => void;
+    initialValue?: string;
 }
 
-export default function SearchBar({ placeholder = "Search movies...", onSearch }: SearchBarProps) {
+export default function SearchBar({ placeholder = "Search movies...", initialValue = "" }: SearchBarProps) {
+    const router = useRouter();
+    const [query, setQuery] = useState(initialValue);
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const formData = new FormData(e.currentTarget);
-        const query = formData.get('search') as string;
-        onSearch?.(query);
+        router.push(`/search?query=${encodeURIComponent(query.trim())}&page=1`);
     };
 
     return (
@@ -25,6 +28,8 @@ export default function SearchBar({ placeholder = "Search movies...", onSearch }
                     type="search"
                     name="search"
                     placeholder={placeholder}
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
                     className={styles.searchInput}
                     required
                 />

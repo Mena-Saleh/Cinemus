@@ -10,10 +10,12 @@ export default function MovieGrid({ movies }: MovieGridProps) {
     return (
         <div className={styles.grid}>
             {movies.map((movie) => (
-                <MovieCard
-                    key={movie.id}
-                    movie={movie}
-                />
+                movie.poster_path && (
+                    <MovieCard
+                        key={movie.id}
+                        movie={movie}
+                    />
+                )
             ))}
         </div>
     );
