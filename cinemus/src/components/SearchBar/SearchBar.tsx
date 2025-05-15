@@ -1,21 +1,28 @@
 'use client';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { Search } from 'lucide-react';
-import styles from './SearchBar.module.css';
 import { useState } from 'react';
+import { Search } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import styles from './SearchBar.module.css';
 
 interface SearchBarProps {
     placeholder?: string;
     initialValue?: string;
+    onSearch?: (query: string) => void;
 }
 
-export default function SearchBar({ placeholder = "Search movies...", initialValue = "" }: SearchBarProps) {
-    const router = useRouter();
+export default function SearchBar({ placeholder = "Search movies...", initialValue = "", onSearch }: SearchBarProps) {
     const [query, setQuery] = useState(initialValue);
+    const router = useRouter();
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        router.push(`/search?query=${encodeURIComponent(query.trim())}&page=1`);
+        const trimmedQuery = query.trim();
+        if (onSearch) {
+            onSearch(trimmedQuery);
+        } else {
+            // If no onSearch prop is provided, redirect to the search page (default behavior from homepage)
+            router.push(`/search?query=${encodeURIComponent(trimmedQuery)}`);
+        }
     };
 
     return (

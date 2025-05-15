@@ -2,18 +2,3 @@
     min-height: 80vh;
     padding: 8rem 1.5rem 2rem;
 }
-
-.container {
-    padding: 4rem 0;
-    margin: 0 auto;
-}
-
-.empty {
-    text-align: center;
-}
-
-@media (max-width: 640px) {
-    .container {
-        margin: 0 auto;
-    }
-}

@@ -1,32 +1,20 @@
-import SearchBar from '@/components/SearchBar/SearchBar';
-import MovieGrid from '@/components/MovieGrid/MovieGrid';
-import { searchMovies } from '@/services/tmdb/movie';
+import SearchClient from '@/components/SearchClient/SearchClient';
 import styles from './page.module.css';
-import { MovieCard as MovieCardType } from '@/models/MovieCard';
+import delay from '@/utils/delay';
 
 interface SearchPageProps {
-    searchParams: { query?: string; page?: number };
+    searchParams: { query?: string; page?: string };
 }
 
 export default async function SearchPage({ searchParams }: SearchPageProps) {
-    const { query, page } = await searchParams;
+    // Simulate delay to check out loaders
+    // await delay(2000);
 
-    let movies: MovieCardType[] = [];
-    if (query) {
-        const response = await searchMovies(query);
-        movies = response.results;
-    }
+    const { query, page } = await searchParams;
 
     return (
         <div className={styles.page}>
-            <SearchBar placeholder="Search movies..." initialValue={query} />
-            <div className={styles.container}>
-                {query ? (
-                    <MovieGrid movies={movies} />
-                ) : (
-                    <p className={styles.empty}>Start typing to search for a movie.</p>
-                )}
-            </div>
+            <SearchClient initialQuery={query as string} initialPage={Number(page)} />
         </div>
     );
 }

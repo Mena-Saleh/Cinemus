@@ -9,6 +9,7 @@ interface MovieCardProps {
 
 const TMDB_IMAGE_BASE_URL = process.env.NEXT_PUBLIC_TMDB_IMAGE_BASE_URL || 'https://image.tmdb.org/t/p/w200';
 
+
 export default function MovieCard({ movie }: MovieCardProps) {
     return (
         <div className={styles.card}>
@@ -16,6 +17,7 @@ export default function MovieCard({ movie }: MovieCardProps) {
                 src={`${TMDB_IMAGE_BASE_URL}${movie.poster_path}`}
                 alt={`${movie.title} poster`}
                 fill
+                sizes="(max-width: 768px) 150px, 200px"
                 className={styles.poster}
                 priority={false}
             />

@@ -15,7 +15,7 @@
 }
 
 .searchContainer:focus-within {
-    box-shadow: 1px 1px 3px 2px var(--primary-500);
+    box-shadow: 0 0 0 1px var(--primary-300);
 }
 
 .searchButton {
