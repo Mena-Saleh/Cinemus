@@ -8,8 +8,10 @@ export async function GET(req: NextRequest) {
     const query = searchParams.get('query');
     const page = Number(searchParams.get('page') || '1');
 
-    if (!query) return NextResponse.json({ results: [] });
+    if (!query || !query.trim()) {
+        return NextResponse.json({ error: 'Missing query parameter' }, { status: 400 });
+    }
 
     const data: PaginatedResponse<MovieCard> = await searchMovies(query, page);
-    return NextResponse.json(data);
+    return NextResponse.json(data, { status: 200 });
 }

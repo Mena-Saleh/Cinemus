@@ -43,7 +43,7 @@ export async function handleApiRequest<T>(
     });
 
     if (res.status === 404) {
-        return notFound();
+        throw new Error(`Not Found: ${res.statusText}`);
     }
     if (!res.ok) {
         throw new Error(`TMDB API request failed: ${res.statusText}`);

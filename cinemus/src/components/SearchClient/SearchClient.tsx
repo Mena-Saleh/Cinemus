@@ -29,7 +29,7 @@ export default function SearchClient() {
             try {
                 // Simulating network delay to check skeletons
                 await delay(500);
-                const res = await fetch(`/api/search?query=${encodeURIComponent(query)}&page=${page}`);
+                const res = await fetch(`/api/movie/search?query=${encodeURIComponent(query)}&page=${page}`);
                 const data = await res.json();
                 setMovies(data.results || []);
                 setHasSearched(true);
@@ -59,7 +59,7 @@ export default function SearchClient() {
                 <p className={styles.Message + " " + styles.error}>{error}</p>
             ) : !query ? (
                 <p className={styles.message}>Start typing to search for a movie.</p>
-            ) : movies.length === 0 && hasSearched ? (
+            ) : movies.length === 0 && hasSearched && !error ? (
                 <p className={styles.message}>Oops, no results found. Try typing another keyword.</p>
             ) : (
                 <MovieGrid movies={movies} />

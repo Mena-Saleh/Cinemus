@@ -8,10 +8,14 @@ export async function searchMovies(query: string, page = 1) {
     return handleApiRequest<PaginatedResponse<MovieCard>>('/search/movie', { query, page });
 }
 
-export async function getMovieDetails(movieId: string): Promise<MovieDetailsResponse> {
+export async function getMovieDetails(id: string): Promise<MovieDetailsResponse> {
     const [details, credits] = await Promise.all([
-        handleApiRequest<MovieDetails>(`/movie/${movieId}`),
-        handleApiRequest<MovieCredits>(`/movie/${movieId}/credits`),
+        handleApiRequest<MovieDetails>(`/movie/${id}`),
+        handleApiRequest<MovieCredits>(`/movie/${id}/credits`),
     ]);
     return { details, credits };
+}
+
+export async function getMovieCardById(id: string): Promise<MovieCard> {
+    return handleApiRequest<MovieCard>(`/movie/${id}`);
 }

@@ -1,5 +1,4 @@
 import { getMovieDetails } from "@/services/tmdb/movie";
-import { notFound } from "next/navigation";
 import Poster from "@/components/Details/Poster/Poster";
 import Info from "@/components/Details/Info/Info";
 import Credits from "@/components/Details/Credits/Credits";
