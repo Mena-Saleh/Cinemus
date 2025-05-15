@@ -1,0 +1,180 @@
+.detailsPage {
+    display: flex;
+    flex-direction: row;
+    gap: 2.5rem;
+    padding: 2.5rem 1.5rem;
+    max-width: 1000px;
+    width: 90%;
+    margin: 6rem auto 2rem;
+    background: var(--neutral-700);
+    border-radius: 2rem;
+}
+
+.posterWrapper {
+    flex-shrink: 0;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.poster {
+    border-radius: 1.5rem;
+    object-fit: cover;
+    width: 300px;
+    height: 450px;
+    background: var(--neutral-900);
+}
+
+.info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem;
+    justify-content: flex-start;
+}
+
+.title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--primary-400);
+}
+
+.overview {
+    font-size: 1.1rem;
+    color: var(--neutral-50);
+    margin-bottom: 1rem;
+}
+
+.meta {
+    display: flex;
+    gap: 2rem;
+    font-size: 1rem;
+    color: var(--neutral-100);
+}
+
+.creditsSection {
+    margin-top: 1.5rem;
+}
+
+.creditsSection h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-400);
+}
+
+.creditsList {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+}
+
+.creditItem {
+    font-size: 1rem;
+    color: var(--neutral-50);
+    margin-bottom: 0.3rem;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.starIcon {
+    color: var(--primary-400);
+}
+
+@media (max-width: 900px) {
+    .detailsPage {
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem 0.5rem;
+    }
+
+    .poster {
+        width: 220px;
+        height: 330px;
+    }
+}
+
+.errorPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    padding: 8rem 1.5rem 0;
+    text-align: center;
+}
+
+.errorTitle {
+    font-size: 2rem;
+    color: var(--primary-400);
+    margin-bottom: 1rem;
+}
+
+.errorMessage {
+    color: var(--neutral-50);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.backButton {
+    background: var(--primary-400);
+    color: var(--neutral-900);
+    border: none;
+    border-radius: 2rem;
+    padding: 0.7rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.backButton:hover {
+    background: var(--primary-500);
+}
+
+@media (max-width: 768px) {
+    .errorTitle {
+        font-size: 1.5rem;
+    }
+
+    .errorMessage {
+        font-size: 1rem;
+    }
+
+    .backButton {
+        padding: 0.5rem 1.5rem;
+        font-size: 0.8rem;
+    }
+
+    .info {
+        padding: 0.5rem;
+        gap: 1rem;
+    }
+
+    .title {
+        font-size: 1.3rem;
+    }
+
+    .overview {
+        font-size: 0.95rem;
+    }
+
+    .meta {
+        font-size: 0.85rem;
+        gap: 1rem;
+    }
+
+    .creditsSection h2 {
+        font-size: 1rem;
+    }
+
+    .creditItem {
+        font-size: 0.9rem;
+    }
+}

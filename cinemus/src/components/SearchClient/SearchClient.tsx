@@ -14,7 +14,7 @@ export default function SearchClient() {
     const [movies, setMovies] = useState<MovieCard[]>([]);
     const [isLoading, setIsLoading] = useState(false);
     const [hasSearched, setHasSearched] = useState(false);
-
+    const [error, setError] = useState("");
     const query = searchParams.get('query') || '';
     const page = Number(searchParams.get('page') || '1');
 
@@ -33,7 +33,12 @@ export default function SearchClient() {
                 const data = await res.json();
                 setMovies(data.results || []);
                 setHasSearched(true);
-            } finally {
+            }
+            catch (error) {
+                console.log(error);
+                setError("An Error Occured while searching for movies");
+            }
+            finally {
                 setIsLoading(false);
             }
         };
@@ -50,6 +55,8 @@ export default function SearchClient() {
             <SearchBar initialValue={query} onSearch={onSearch} />
             {isLoading ? (
                 <MovieGridSkeleton />
+            ) : error ? (
+                <p className={styles.Message + " " + styles.error}>{error}</p>
             ) : !query ? (
                 <p className={styles.message}>Start typing to search for a movie.</p>
             ) : movies.length === 0 && hasSearched ? (

@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { searchMovies } from '@/services/tmdb/movie';
+import { PaginatedResponse } from '@/models/PaginatedResponse';
+import { MovieCard } from '@/models/MovieCard';
 
 export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url);
@@ -8,6 +10,6 @@ export async function GET(req: NextRequest) {
 
     if (!query) return NextResponse.json({ results: [] });
 
-    const data = await searchMovies(query, page);
+    const data: PaginatedResponse<MovieCard> = await searchMovies(query, page);
     return NextResponse.json(data);
 }

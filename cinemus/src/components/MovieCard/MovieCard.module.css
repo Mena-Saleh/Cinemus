@@ -40,7 +40,6 @@
     background: rgba(20, 20, 20, 0.85);
     color: var(--neutral-50);
     opacity: 0;
-    transform: translateY(20px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,11 +48,11 @@
     flex-direction: column;
     padding: 1.5rem;
     text-align: center;
+    cursor: pointer;
 }
 
 .card:hover .overlay {
     opacity: 1;
-    transform: translateY(0px);
 }
 
 .info {
@@ -61,7 +60,14 @@
     flex-direction: column;
     gap: 0.5rem;
     align-items: center;
+    transform: translateY(20px);
+    transition: all 0.3s;
 }
+
+.card:hover .info {
+    transform: translateY(0px);
+}
+
 
 .title {
     font-size: 1.1rem;
