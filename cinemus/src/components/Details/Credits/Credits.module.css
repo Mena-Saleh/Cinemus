@@ -1,0 +1,31 @@
+.creditsSection {
+    margin-top: 1.5rem;
+}
+
+.creditsSection h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-400);
+}
+
+.creditsList {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+}
+
+.creditItem {
+    font-size: 1rem;
+    color: var(--neutral-50);
+    margin-bottom: 0.3rem;
+}
+
+@media (max-width: 768px) {
+    .creditsSection h2 {
+        font-size: 1rem;
+    }
+
+    .creditItem {
+        font-size: 0.9rem;
+    }
+}

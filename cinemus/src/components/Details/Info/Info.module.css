@@ -1,0 +1,56 @@
+.info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-content: flex-start;
+}
+
+.title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--primary-400);
+}
+
+.overview {
+    font-size: 1.1rem;
+    color: var(--neutral-50);
+    margin-bottom: 1rem;
+}
+
+.meta {
+    display: flex;
+    gap: 2rem;
+    font-size: 1rem;
+    color: var(--neutral-100);
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.starIcon {
+    color: var(--primary-400);
+}
+
+@media (max-width: 768px) {
+    .info {
+        gap: 1rem;
+    }
+
+    .title {
+        font-size: 1.3rem;
+    }
+
+    .overview {
+        font-size: 0.95rem;
+    }
+
+    .meta {
+        font-size: 0.85rem;
+        gap: 1rem;
+    }
+}

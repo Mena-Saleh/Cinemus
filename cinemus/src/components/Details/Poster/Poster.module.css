@@ -1,0 +1,22 @@
+.posterWrapper {
+    flex-shrink: 0;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.poster {
+    border-radius: 1.5rem;
+    object-fit: cover;
+    width: 300px;
+    height: 450px;
+    background: var(--neutral-900);
+}
+
+@media (max-width: 900px) {
+    .poster {
+        width: 220px;
+        height: 330px;
+    }
+}
