@@ -19,9 +19,9 @@
 .navLink {
     font-weight: 500;
     color: var(--neutral-900);
-    background-color: var(--primary-500);
+    background-color: var(--primary-300);
     padding: 0.5rem 1rem;
-    border-radius: 1rem;
+    border-radius: 3rem;
     transition: all 0.5s;
     display: flex;
     align-items: center;
@@ -30,11 +30,11 @@
 }
 
 .navLink:hover {
-    background-color: var(--primary-700);
+    background-color: var(--primary-500);
 }
 
 @media (max-width: 768px) {
-    .container {
-        width: 90%;
+    .header {
+        font-size: 0.8rem;
     }
 }

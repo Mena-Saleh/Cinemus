@@ -11,18 +11,6 @@
   --primary-800: #8A7D00;
   --primary-900: #6B6100;
 
-  /* Secondary Color */
-  --secondary-50: #F5E6FF;
-  --secondary-100: #E2B3FF;
-  --secondary-200: #CF80FF;
-  --secondary-300: #BC4DFF;
-  --secondary-400: #A91AFF;
-  --secondary-500: #9600FF;
-  --secondary-600: #8500E6;
-  --secondary-700: #7400CC;
-  --secondary-800: #6300B3;
-  --secondary-900: #520099;
-
   /* Neutral Color */
   --neutral-50: #F2F2F3;
   --neutral-100: #D4D4D8;
@@ -36,14 +24,8 @@
   --neutral-900: #0F0F10;
 
   /* Default Background/Foreground Colors */
-  --background: #F2F2F3;
-  --foreground: #1F1F22;
-
-  /* Breakpoints */
-  --breakpoint-sm: 480px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 1024px;
-  --breakpoint-xl: 1280px;
+  --background: #1F1F22;
+  --foreground: #F2F2F3;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -71,6 +53,7 @@ body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
 a {

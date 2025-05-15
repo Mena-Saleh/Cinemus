@@ -8,7 +8,7 @@
 }
 
 .heart {
-    color: var(--primary-500);
+    color: var(--primary-300);
     display: inline-block;
     vertical-align: middle;
     margin: 0 0.25rem;
@@ -17,4 +17,10 @@
 
 .heart:hover {
     transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+    .footer {
+        font-size: 0.8rem;
+    }
 }

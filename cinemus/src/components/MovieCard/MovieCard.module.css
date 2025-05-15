@@ -1,0 +1,79 @@
+.card {
+    width: 200px;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10);
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+
+.poster {
+    object-fit: cover;
+    border-radius: 16px;
+    transition: filter 0.3s;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(20, 20, 20, 0.85);
+    color: var(--neutral-50);
+    opacity: 0;
+    transform: translateY(20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    z-index: 2;
+    flex-direction: column;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.card:hover .overlay {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: var(--neutral-50);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.year {
+    font-size: 0.95rem;
+    color: var(--neutral-100);
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 1rem;
+    color: var(--primary-400);
+    font-weight: 500;
+}
+
+.starIcon {
+    color: var(--primary-400);
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 150px;
+        height: 225px;
+    }
+}

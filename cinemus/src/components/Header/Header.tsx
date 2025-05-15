@@ -17,9 +17,9 @@ export default function Header() {
             </Link>
 
             <nav className={styles.nav}>
-                <Link href="/favourites" className={styles.navLink}>
+                <Link href="/favorites" className={styles.navLink}>
                     <Heart size={20} fill="currentColor" />
-                    Favourites
+                    Favorites
                 </Link>
             </nav>
         </header >
