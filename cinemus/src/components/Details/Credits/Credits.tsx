@@ -17,16 +17,16 @@ export default function Credits({ cast, crew }: CreditsProps) {
         <div className={styles.creditsSection}>
             <h2>Top Cast</h2>
             <ul className={styles.creditsList}>
-                {cast.map((person) => (
-                    <li key={person.id} className={styles.creditItem}>
+                {cast.map((person, index) => (
+                    <li key={index} className={styles.creditItem}>
                         <strong>{person.name}</strong> <span>as {person.character}</span>
                     </li>
                 ))}
             </ul>
             <h2>Top Crew</h2>
             <ul className={styles.creditsList}>
-                {crew.map((person) => (
-                    <li key={person.id} className={styles.creditItem}>
+                {crew.map((person, index) => (
+                    <li key={index} className={styles.creditItem}>
                         <strong>{person.name}</strong> <span>({person.job})</span>
                     </li>
                 ))}
