@@ -14,20 +14,21 @@ export const useFavoritesStore = create(
     persist<FavoritesState>(
         (set, get) => ({
             favorites: new Set(),
-
             addFavorite: (id) => {
+                id = id.toString()
                 const updated = new Set(get().favorites);
                 updated.add(id);
                 set({ favorites: updated });
             },
 
             removeFavorite: (id) => {
+                id = id.toString()
                 const updated = new Set(get().favorites);
                 updated.delete(id);
                 set({ favorites: updated });
             },
 
-            isFavorite: (id) => get().favorites.has(id),
+            isFavorite: (id) => get().favorites.has(id.toString()),
 
             getFavoriteList: () => Array.from(get().favorites),
         }),

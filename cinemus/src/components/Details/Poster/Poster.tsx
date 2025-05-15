@@ -12,7 +12,7 @@ interface PosterProps {
 }
 
 export default function Poster({ id, src, alt }: PosterProps) {
-    const { isFavorite, addFavorite, removeFavorite } = useFavoritesStore();
+    const { favorites, isFavorite, addFavorite, removeFavorite } = useFavoritesStore();
     const [pulse, setPulse] = useState(false);
 
     // Handles adding/removing from favorites
