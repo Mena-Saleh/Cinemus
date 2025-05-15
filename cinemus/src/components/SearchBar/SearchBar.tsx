@@ -21,7 +21,7 @@ export default function SearchBar({ placeholder = "Search movies...", initialVal
             onSearch(trimmedQuery);
         } else {
             // If no onSearch prop is provided, redirect to the search page (default behavior from homepage)
-            router.push(`/search?query=${encodeURIComponent(trimmedQuery)}`);
+            router.push(`/search?query=${encodeURIComponent(trimmedQuery)}&page=1`);
         }
     };
 
@@ -32,7 +32,7 @@ export default function SearchBar({ placeholder = "Search movies...", initialVal
                     <Search className={styles.searchIcon} size={20} />
                 </button>
                 <input
-                    type="search"
+                    type="text"
                     name="search"
                     placeholder={placeholder}
                     value={query}
