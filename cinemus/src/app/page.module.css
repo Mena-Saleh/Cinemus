@@ -1,0 +1,38 @@
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100vh;
+  position: relative;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(30, 30, 30, 0.4)),
+    url('/background.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: center;
+  padding: 2.5rem;
+}
+
+.page h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--neutral-50);
+}
+
+.page h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--neutral-50);
+}
+
+@media (max-width: 768px) {
+  .page h1 {
+    font-size: 2rem;
+  }
+
+  .page h2 {
+    font-size: 1.2rem;
+  }
+}
