@@ -1,6 +1,5 @@
 import SearchClient from '@/components/SearchClient/SearchClient';
 import styles from './page.module.css';
-import delay from '@/utils/delay';
 
 
 export default async function SearchPage() {
