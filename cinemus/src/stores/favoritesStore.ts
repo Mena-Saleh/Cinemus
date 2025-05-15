@@ -40,7 +40,7 @@ export const useFavoritesStore = create(
             // Convert array in localStorage back to Set for runtime
             merge: (persisted, current) => ({
                 ...current,
-                favorites: new Set((persisted as any).favorites || []),
+                favorites: new Set((persisted as unknown as FavoritesState).favorites || []),
             }),
         }
     )

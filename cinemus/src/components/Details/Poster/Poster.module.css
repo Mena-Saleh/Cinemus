@@ -1,22 +1,31 @@
 .posterWrapper {
+    width: 300px;
+    height: 450px;
     flex-shrink: 0;
     border-radius: 1.5rem;
     overflow: hidden;
-    display: flex;
-    align-items: center;
+    position: relative;
+    margin: auto 0;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 .poster {
     border-radius: 1.5rem;
     object-fit: cover;
-    width: 300px;
-    height: 450px;
-    background: var(--neutral-900);
 }
 
-@media (max-width: 900px) {
-    .poster {
-        width: 220px;
-        height: 330px;
+.posterIcon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+
+@media (max-width: 768px) {
+    .posterWrapper {
+        width: 250px;
+        height: 375px;
     }
 }

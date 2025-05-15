@@ -45,9 +45,11 @@ export default function MovieCard({ movie }: MovieCardProps) {
         <div className={styles.card}>
             <Heart
                 size={32}
-                className={`${styles.favoriteIcon} ${pulse ? styles.pulsate : ''}`}
+                className={`favoriteIcon ${pulse ? 'pulsate' : ''}`}
                 fill={isFavorite(movie.id) ? 'currentColor' : 'none'}
-                onClick={handleFavoriteClick}>
+                onClick={handleFavoriteClick}
+                aria-label="Favorite button"
+            >
             </Heart>
 
             <Image

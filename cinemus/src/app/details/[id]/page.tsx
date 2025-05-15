@@ -16,7 +16,7 @@ export default async function DetailsPage({ params }: { params: { id: string } }
 
     return (
         <div className={styles.detailsPage}>
-            <Poster src={posterUrl} alt={details.title} />
+            <Poster id={id} src={posterUrl} alt={details.title} />
             <div>
                 <Info
                     title={details.title}

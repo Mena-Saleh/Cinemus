@@ -37,7 +37,7 @@ export default function FavoritesPage() {
 
     return (
         <div className={styles.page}>
-            <h1 className={styles.title}>My Favorites</h1>
+            <h2 className={styles.title}>My Favorites</h2>
             {isLoading ? (
                 <MovieGridSkeleton />
             ) : error ? (

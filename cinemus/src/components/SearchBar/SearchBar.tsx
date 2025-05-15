@@ -28,8 +28,12 @@ export default function SearchBar({ placeholder = "Search movies...", initialVal
     return (
         <form className={styles.searchForm} onSubmit={handleSubmit}>
             <div className={styles.searchContainer}>
-                <button type="submit" className={styles.searchButton}>
-                    <Search className={styles.searchIcon} size={20} />
+                <button
+                    type="submit"
+                    className={styles.searchButton}
+                    aria-label="Search movies"
+                >
+                    <Search className={styles.searchIcon} size={20} aria-hidden="true" />
                 </button>
                 <input
                     type="text"
