@@ -1,3 +1,5 @@
+import { notFound } from "next/navigation";
+
 const TMDB_API_BASE_URL = process.env.TMDB_API_BASE_URL;
 const TMDB_API_KEY = process.env.TMDB_API_KEY;
 
@@ -40,6 +42,9 @@ export async function handleApiRequest<T>(
         headers: getHeaders(),
     });
 
+    if (res.status === 404) {
+        return notFound();
+    }
     if (!res.ok) {
         throw new Error(`TMDB API request failed: ${res.statusText}`);
     }
