@@ -1,6 +1,6 @@
 # Cinemus
 
-A movie discovery app built with **Next.js** and the **TMDB API**, developed as part of Noon's frontend case study challenge.
+A movie discovery app built with **Next.js** and the **TMDB API**, developed as part of Noon's frontend case study.
 
 ---
 
@@ -28,7 +28,7 @@ This project uses **[Bun](https://bun.sh/)** as the JavaScript runtime, offering
 
 Create a `.env` file by copying from `.env.example`, then add your TMDB API key.
 
-
+Run the following scripts in terminal:
 
 ```bash
 bun install
@@ -67,7 +67,7 @@ bun dev
 ## 4. Bonus Features
 
 - **Interactive Pagination**  
-  Users can navigate through paginated movie search results using a dynamic, accessible pagination component.
+  Users can navigate through paginated movie search results using a dynamic pagination component.
 
 ---
 
