@@ -12,22 +12,17 @@ export default function SearchPage() {
     const router = useRouter();
     const searchParams = useSearchParams();
 
-    const [query, setQuery] = useState<string>(searchParams.get('query') || '');
-    const urlPage = Number(searchParams.get('page') || '1');
+    // Get from URL search params
+    const query = searchParams.get('query') || '';
+    const page = Number(searchParams.get('page') || '1');
 
     const [movies, setMovies] = useState<MovieCard[]>([]);
     const [totalPages, setTotalPages] = useState(1);
     const [isLoading, setIsLoading] = useState(false);
     const [hasSearched, setHasSearched] = useState(false);
     const [error, setError] = useState('');
-    const [currentPage, setCurrentPage] = useState(urlPage);
 
-    // Sync currentPage from URL on first mount (or on URL changes)
-    useEffect(() => {
-        setCurrentPage(urlPage);
-    }, [urlPage]);
-
-    // Fetch data from API when query or page changes
+    // Refetches when query or page changes (from the URL)
     useEffect(() => {
         const fetchData = async () => {
             if (!query) {
@@ -35,16 +30,18 @@ export default function SearchPage() {
                 setHasSearched(false);
                 return;
             }
+
             setIsLoading(true);
             setError('');
+
             try {
-                const res = await fetch(`/api/movie/search?query=${encodeURIComponent(query)}&page=${urlPage}`);
+                const res = await fetch(`/api/movie/search?query=${encodeURIComponent(query)}&page=${page}`);
                 const data = await res.json();
                 setMovies(data.results || []);
                 setTotalPages(data.total_pages || 1);
                 setHasSearched(true);
-            } catch (error) {
-                console.log(error);
+            } catch (err) {
+                console.error(err);
                 setError('An error occurred while searching for movies.');
             } finally {
                 setIsLoading(false);
@@ -52,19 +49,22 @@ export default function SearchPage() {
         };
 
         fetchData();
-    }, [query, urlPage]);
+    }, [query, page]);
 
-    // Update query state and reset current page to 1
+    // Update query + resets to page 1
     const onSearch = (value: string) => {
-        setQuery(value);
-        setCurrentPage(1);
+        const params = new URLSearchParams();
+        params.set('query', value);
+        params.set('page', '1');
+        router.replace(`/search?${params.toString()}`);
     };
 
-    // Update the URL without causing a full page reload (this is to sync the url with the new page)
+    // Updates page from URL params
     const handlePageChange = (newPage: number) => {
         const params = new URLSearchParams(searchParams.toString());
         params.set('page', newPage.toString());
         router.replace(`/search?${params.toString()}`);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     return (
@@ -84,7 +84,7 @@ export default function SearchPage() {
                     <MovieGrid movies={movies} />
                     <Pagination
                         totalPages={totalPages}
-                        currentPage={currentPage}
+                        currentPage={page}
                         onPageChange={handlePageChange}
                     />
                 </>
