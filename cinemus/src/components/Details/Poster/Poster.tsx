@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useFavoritesStore } from "@/stores/favoritesStore";
 import styles from "./Poster.module.css";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Heart } from "lucide-react";
 
 interface PosterProps {
@@ -14,6 +14,15 @@ interface PosterProps {
 export default function Poster({ id, src, alt }: PosterProps) {
     const { isFavorite, addFavorite, removeFavorite } = useFavoritesStore();
     const [pulse, setPulse] = useState(false);
+    const [hydrated, setHydrated] = useState(false);
+
+    // useEffect runs only on the client, this way we can ensure the component is hydrated
+    useEffect(() => {
+        setHydrated(true);
+    }, []);
+
+    // Checking favorite status after hydration to avoid SSR/CSR mismatch
+    const isFav = hydrated ? isFavorite(id) : false;
 
     // Handles adding/removing from favorites
     const handleFavoriteClick = () => {
@@ -31,7 +40,7 @@ export default function Poster({ id, src, alt }: PosterProps) {
             <Heart
                 size={38}
                 className={`favoriteIcon ${pulse ? 'pulsate' : ''} ${styles.posterIcon}`}
-                fill={isFavorite(id) ? 'currentColor' : 'none'}
+                fill={isFav ? 'currentColor' : 'none'}
                 onClick={handleFavoriteClick}
                 aria-label="Favorite button"
             >
