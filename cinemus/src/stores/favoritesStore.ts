@@ -16,6 +16,7 @@ export const useFavoritesStore = create(
             favorites: new Set(),
             addFavorite: (id) => {
                 id = id.toString()
+                // Need to make a copy of the set because zustand relies on reference equality to detect changes
                 const updated = new Set(get().favorites);
                 updated.add(id);
                 set({ favorites: updated });
@@ -46,3 +47,4 @@ export const useFavoritesStore = create(
         }
     )
 );
+
