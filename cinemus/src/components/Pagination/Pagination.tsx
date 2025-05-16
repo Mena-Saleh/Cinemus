@@ -43,7 +43,7 @@ export default function Pagination({ totalPages, currentPage, onPageChange }: Pa
     return (
         <div className={styles.pagination}>
             <button
-                className={styles.navButton}
+                className={styles.paginationButton}
                 onClick={() => handleChange(currentPage - 1)}
                 disabled={currentPage === 1}
                 aria-label="Previous"
@@ -67,7 +67,7 @@ export default function Pagination({ totalPages, currentPage, onPageChange }: Pa
             )}
 
             <button
-                className={styles.navButton}
+                className={styles.paginationButton}
                 onClick={() => handleChange(currentPage + 1)}
                 disabled={currentPage === totalPages}
                 aria-label="Next"
