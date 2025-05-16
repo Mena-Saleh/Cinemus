@@ -5,47 +5,33 @@ if (!TMDB_API_KEY) {
     throw new Error('TMDB_API_KEY is not set in environment variables');
 }
 
-function getHeaders() {
-    return {
+import axios, { AxiosError } from 'axios';
+
+const tmdb = axios.create({
+    baseURL: TMDB_API_BASE_URL,
+    headers: {
         Authorization: `Bearer ${TMDB_API_KEY}`,
         'Content-Type': 'application/json',
         Accept: 'application/json',
-    };
-}
-
-function getCommonParams() {
-    return {
+    },
+    params: {
         language: 'en-US',
-        include_adult: 'false',
-    };
-}
-
-function buildQuery(params: Record<string, string | number | boolean>) {
-    return Object.entries(params)
-        .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
-        .join('&');
-}
+        include_adult: false,
+    },
+});
 
 export async function handleApiRequest<T>(
     endpoint: string,
     params: Record<string, string | number | boolean> = {}
 ): Promise<T> {
-    const queryParams = {
-        ...getCommonParams(),
-        ...params,
-    };
-
-    const url = `${TMDB_API_BASE_URL}${endpoint}?${buildQuery(queryParams)}`;
-    const res = await fetch(url, {
-        headers: getHeaders(),
-    });
-
-    if (res.status === 404) {
-        throw new Error(`Not Found: ${res.statusText}`);
+    try {
+        const res = await tmdb.get<T>(endpoint, { params });
+        return res.data;
+    } catch (error) {
+        const err = error as AxiosError;
+        if (err.response?.status === 404) {
+            throw new Error('Not Found');
+        }
+        throw new Error(`TMDB API request failed: ${err.message}`);
     }
-    if (!res.ok) {
-        throw new Error(`TMDB API request failed: ${res.statusText}`);
-    }
-
-    return res.json();
-} 
+}
