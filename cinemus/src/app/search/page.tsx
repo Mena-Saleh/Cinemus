@@ -7,6 +7,7 @@ import MovieGridSkeleton from '@/components/MovieGrid/MovieGridSkeleton';
 import Pagination from '@/components/Pagination/Pagination';
 import { MovieCard } from '@/models/MovieCard';
 import styles from './page.module.css';
+import { PaginatedResponse } from '@/models/PaginatedResponse';
 
 export default function SearchPage() {
     const router = useRouter();
@@ -36,7 +37,7 @@ export default function SearchPage() {
 
             try {
                 const res = await fetch(`/api/movie/search?query=${encodeURIComponent(query)}&page=${page}`);
-                const data = await res.json();
+                const data: PaginatedResponse<MovieCard> = await res.json();
                 setMovies(data.results || []);
                 setTotalPages(data.total_pages || 1);
                 setHasSearched(true);
