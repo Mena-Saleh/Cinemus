@@ -2,10 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getMovieCardById } from '@/services/tmdb/movie';
 import { MovieCard } from '@/models/MovieCard';
 
-export async function GET(
-    _req: NextRequest,
-    { params }: { params: { id: string } }
-) {
+export async function GET(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
 
     if (!id) {

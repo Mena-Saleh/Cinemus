@@ -5,7 +5,7 @@ import Credits from "@/components/Details/Credits/Credits";
 import styles from "./page.module.css";
 import { MovieDetailsResponse } from "@/models/MovieDetailsResponse";
 
-export default async function DetailsPage({ params }: { params: { id: string } }) {
+export default async function DetailsPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
     const res: MovieDetailsResponse = await getMovieDetails(id);
 
