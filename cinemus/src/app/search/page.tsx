@@ -50,6 +50,7 @@ export default function SearchPage() {
         };
 
         fetchData();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }, [query, page]);
 
     // Update query + resets to page 1
@@ -65,7 +66,6 @@ export default function SearchPage() {
         const params = new URLSearchParams(searchParams.toString());
         params.set('page', newPage.toString());
         router.replace(`/search?${params.toString()}`);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     return (

@@ -12,7 +12,6 @@ type PageEntry = number | '...';
 export default function Pagination({ totalPages, currentPage, onPageChange }: PaginationProps) {
     const handleChange = (newPage: number) => {
         if (newPage < 1 || newPage > totalPages) return;
-        window.scrollTo({ top: 0, behavior: 'smooth' });
         onPageChange(newPage);
     };
 
